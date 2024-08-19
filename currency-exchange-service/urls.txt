@@ -1,0 +1,27 @@
+currency exchange service:
+http://localhost:8000/currency-exchange/from/USD/to/EUR
+
+currency conversion service:
+http://localhost:8100/currency-conversion/from/USD/to/EUR/quantity/10
+http://localhost:8100/currency-conversion-feign/from/USD/to/EUR/quantity/10
+
+Eureka server
+http://localhost:8761
+
+Api Gateway
+http://localhost:8765
+http://localhost:8765/currency-conversion-service/currency-conversion-feign/from/EUR/to/AUD/quantity/10
+http://localhost:8765/currency-exchange-service/currency-exchange/from/USD/to/EUR
+
+With routes defined in the gateway
+http://localhost:8765/currency-exchange/from/USD/to/EUR
+http://localhost:8765/currency-conversion/from/USD/to/EUR/quantity/5
+http://localhost:8765/currency-conversion-feign/from/USD/to/EUR/quantity/5
+http://localhost:8765/currency-conversion-new/from/USD/to/EUR/quantity/5
+
+Docker images (using mvn spring-boot:build-image):
+docker.io/slux83/naming-server:0.0.1-SNAPSHOT
+docker.io/slux83/api-gateway:0.0.1-SNAPSHOT
+docker.io/slux83/currency-exchange-service:0.0.1-SNAPSHOT
+docker.io/slux83/currency-conversion-service:0.0.1-SNAPSHOT
+
